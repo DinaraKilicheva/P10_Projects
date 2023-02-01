@@ -7,10 +7,12 @@ import tkinter as tk
 
 from client import Client
 
+bg = 'lightblue'
+
 window = Tk()
 window.title("Hotel Registration")
 window.geometry("700x400")
-window.configure(bg="green")
+window.configure(bg=bg)
 
 clients = []
 
@@ -63,31 +65,31 @@ def clear():
 
 
 # Name
-name_label = Label(window, text="Name: ", fg="blue", font=2, bg="green")
-name_label.grid(row=0, column=0)
+name_label = Label(window, text="Name: ", fg="blue", font=2, bg=bg)
+name_label.grid(row=1, column=0)
 name_entry = Entry(window, width=50, borderwidth=4)
-name_entry.grid(row=0, column=1)
+name_entry.grid(row=1, column=1)
 
 # Age
-age_label = Label(window, text="Age: ", fg="blue", font=2, bg="green")
+age_label = Label(window, text="Age: ", fg="blue", font=2, bg=bg)
 age_label.grid(row=2, column=0)
 age_entry = Entry(window, width=50, borderwidth=4, highlightcolor="red")
 age_entry.grid(row=2, column=1)
 
 # Address
-address_label = Label(window, text="Address ", fg="blue", font=2, bg="green")
+address_label = Label(window, text="Address ", fg="blue", font=2, bg=bg)
 address_label.grid(row=4, column=0)
 address_entry = Entry(window, width=50, borderwidth=4, highlightcolor="red")
 address_entry.grid(row=4, column=1)
 
 # Length of stay
-length_label = Label(window, text="Length of stay: ", fg="blue", font=2, bg="green")
+length_label = Label(window, text="Length of stay: ", fg="blue", font=2, bg=bg)
 length_label.grid(row=6, column=0)
 length_entry = Entry(window, width=50, borderwidth=4, highlightcolor="red")
 length_entry.grid(row=6, column=1)
 
 # Payment
-payment_label = Label(window, text="Payment: ", fg="blue", font=2, bg="green")
+payment_label = Label(window, text="Payment: ", fg="blue", font=2, bg=bg)
 payment_label.grid(row=7, column=0)
 payment_entry = Entry(window, width=50, borderwidth=4, highlightcolor="red")
 payment_entry.grid(row=7, column=1)
