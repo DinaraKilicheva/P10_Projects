@@ -9,7 +9,7 @@ from datetime import datetime
 window = Tk()
 window.title("Age calculator")
 window.geometry("700x350")
-window.configure(bg="gray")
+window.configure(bg="lightblue")
 
 
 def calculate():
@@ -18,7 +18,7 @@ def calculate():
 
 def result():
     age = calculate()
-    result_label = Label(window, text=f"Your age:{age}", bg="grey", font=14)
+    result_label = Label(window, text=f"Your age:{age}", bg="lightblue", font=14)
     result_label.place(x=80, y=170)
 
 
@@ -26,7 +26,7 @@ def submit():
     result()
 
 
-age_label = tk.Label(window, text="Age calculator ", bg="gray", fg="orange", font=20)
+age_label = tk.Label(window, text="Age calculator ", bg="lightblue", fg="orange", font=25)
 age_label.place(x=295, y=10)
 
 # Age date

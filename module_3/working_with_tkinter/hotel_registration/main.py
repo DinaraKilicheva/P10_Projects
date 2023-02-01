@@ -3,6 +3,7 @@ import os
 from datetime import datetime
 from tkinter import messagebox, END, Tk, Label, Entry, Button, Radiobutton, StringVar, IntVar
 from tkcalendar import DateEntry
+import tkinter as tk
 
 from client import Client
 
@@ -15,6 +16,7 @@ clients = []
 
 
 def add():
+    add_btn["state"] = tk.NORMAL
     client = Client(
         name_entry.get(),
         age_entry.get(),
@@ -22,18 +24,31 @@ def add():
         length_entry.get(),
         payment_entry.get(),
     )
-    clients.append(client.get_info(flag=True))
-    messagebox.showinfo("Information", "The data has been added successfully")
+    if None in [client.name, client.age, client.address, client.length_stay, client.payment]:
+        messagebox.showinfo("Please fill all the fields then press button")
+
+    else:
+        add_btn["state"] = tk.DISABLED
+        clients.append(client.get_info(flag=True))
+        messagebox.showinfo("Information", "The data has been added successfully")
+        clients.append(client.get_info(flag=True))
+        messagebox.showinfo("Information", "The data has been added successfully")
 
 
 def save():
-    with open("clients.csv", "a", newline="\n") as file:
-        header = ["Name", "Age", "Address", "Length stay", "Payment"]
-        csv_writer = csv.DictWriter(file, header)
-        if os.path.getsize("Clients.csv") == 0:
-            csv_writer.writeheader()
-        csv_writer.writerows(clients)
+    save_btn["state"]=tk.NORMAL
+    if add_btn["state"] == tk.DISABLED:
+        save_btn["state"]=tk.DISABLED
+        with open("clients.csv", "a", newline="\n") as file:
+            header = ["Name", "Age", "Address", "Length stay", "Payment"]
+            csv_writer = csv.DictWriter(file, header)
+            if os.path.getsize("clients.csv") == 0:
+                csv_writer.writeheader()
+            csv_writer.writerows(clients)
         messagebox.showinfo("Information", "Saved successfully")
+        clear()
+    else:
+        messagebox.showinfo("Please first press the add button")
 
 
 def clear():
