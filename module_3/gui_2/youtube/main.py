@@ -25,12 +25,15 @@ url_entry.place(x=300, y=150)
 
 
 def download():
-    url = url_entry.get()
-
-    YouTube(url).streams.first().download()
-    yt = YouTube(url)
-    yt.streams.filter(progressive=True, file_extension='mp4').order_by('resolution').desc().first().download()
-    messagebox.showinfo("successfully downloaded")
+    try:
+        url = url_entry.get()
+        YouTube(url).streams.first().download()
+    except Exception as e:
+        print(e)
+    else:
+        yt = YouTube(url)
+        yt.streams.filter(progressive=True, file_extension='mp4').order_by('resolution').desc().first().download()
+        messagebox.showinfo("successfully downloaded")
 
 
 result_btn = Button(window, text="download", font=7, bg="olive", fg="blue", command=download)
