@@ -101,8 +101,8 @@ def write_info():
         city_name = clicked1.get().lower()
         obj = WeatherManager(f"{city_name}")
         info = obj.get_daily_temperature()
-        json.dump(info.text, f)
 
+        json.dump(info.text, f)
 
 def get_info():
     with open("date.json", "r") as f:
